@@ -98,4 +98,15 @@ class AdminPegawaiController extends Controller
             return redirect(route('register'));
         
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $user = User::with(['pegawai'])
+            ->where('name', 'like', '%'.$search.'%')
+            ->orWhere('email', 'like', '%'.$search.'%')
+            ->paginate(7);
+
+        return view('Admin.DataPegawai.DataPegawai', compact('user'));
+    }
 }
