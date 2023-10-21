@@ -44,7 +44,7 @@ Route::middleware(['auth', 'isAdmin:0'])->group(function () {
     Route::get('/create', [AdminPegawaiController::class, 'create'])->name('create');
     Route::post('/store',  [AdminPegawaiController::class, 'store'])->name('store');
     Route::get('/delete/{id}', [AdminPegawaiController::class, 'delete'])->name('delete');
-    Route::get('/search', [AdminPegawaiController::class, 'search'])->name('search.datapegawai');
+    Route::get('/searchpegawai', [AdminPegawaiController::class, 'searchpegawai'])->name('searchpegawai.datapegawai');
 
     Route::get('/datakota',  [AdminKotaController::class, 'index'])->name('datakota');
     Route::post('/storekota',  [AdminKotaController::class, 'store'])->name('storekota');
@@ -52,11 +52,11 @@ Route::middleware(['auth', 'isAdmin:0'])->group(function () {
     Route::get('/deletekota/{id}', [AdminKotaController::class, 'delete'])->name('deletekota');
     Route::get('/showkota/{id}', [AdminKotaController::class, 'show'])->name('showkota');
     Route::post('/updatekota/{id}', [AdminKotaController::class, 'update'])->name('updatekota');
-    Route::get('/search', [AdminKotaController::class, 'search'])->name('search.datakota');
+    Route::get('/searchkota', [AdminKotaController::class, 'searchkota'])->name('searchkota.datakota');
 
     Route::get('/dataperdin',  [AdminPerdinController::class, 'index'])->name('dataperdin');
     Route::get('/detailperdin/{id}',  [AdminPerdinController::class, 'detail'])->name('detailperdin');
-    Route::get('/search', [AdminPerdinController::class, 'search'])->name('search.dataperdin');
+    Route::get('/searchperdin', [AdminPerdinController::class, 'searchperdin'])->name('searchperdin.dataperdin');
     
 });
   

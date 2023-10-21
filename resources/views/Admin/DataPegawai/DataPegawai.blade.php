@@ -19,15 +19,16 @@
                   <button type="button" class="btn btn-secondary mb-4 " onClick="create()"><i class="bx bx-add me-1"></i>Pendaftaran Pegawai</button>
                 </div>  
                 <div class="d-grid gap-2">
-                  <form action="{{ route('search.datapegawai') }}" method="GET" class="form-inline my-2 my-lg-0">
+                  <form action="{{ route('searchpegawai.datapegawai') }}" method="GET" class="form-inline my-2 my-lg-0">
                     <div class="d-flex justify-content-end">
-                      <div class="input-group " style="width: 300px;">
-                          <input class="form-control" type="search" name="search" placeholder="Cari pegawai" aria-label="Search">
-                          <button class="btn btn-secondary" type="submit">Cari</button>
-                      </div>
+                        <div class="input-group" style="width: 300px;">
+                            <input class="form-control" type="search" name="searchpegawai" placeholder="Cari pegawai" aria-label="Search">
+                            <button class="btn btn-secondary" type="submit">Cari</button>
+                        </div>
                     </div>
-                  </form>
+                </form>
                 </div>
+                
 
                 <div class="table-responsive">
                   <table class="table text-nowrap mb-0 align-middle">
