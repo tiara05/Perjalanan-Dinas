@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('kotaasal');
             $table->string('kotatujuan');
             $table->double('durasi');
-            $table->index('id_user');
+            $table->integer('id_user')->index();
             $table->integer('is_user');
             $table->string('Status')->default('Pending');
             $table->timestamps();

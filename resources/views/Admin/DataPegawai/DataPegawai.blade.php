@@ -59,7 +59,7 @@
                             <h6 class="fw-semibold mb-1">{{$pr->email}}</h6>                          
                         </td>
                         <td class="border-bottom-0">
-                          <p class="mb-0 fw-normal">{{$pr->pegawai->NIP}}</p>
+                        <p class="mb-0 fw-normal">{{ $pr->pegawai ? $pr->pegawai->NIP : 'N/A' }}</p>
                         </td>
                         <td class="border-bottom-0">
                           <div class="d-flex align-items-center gap-2">
