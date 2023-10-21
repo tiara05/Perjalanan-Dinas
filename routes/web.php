@@ -14,6 +14,7 @@ use App\Http\Controllers\Pegawai\PegawaiPerdinController;
 use App\Http\Controllers\SDM\SDMHomeController;
 use App\Http\Controllers\SDM\SDMPerdinController;
 use App\Http\Controllers\SDM\SDMHistoryController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::get('auth/redirect', [LoginController::class, 'redirectToGoogle']);
+Route::get('auth/callback', [LoginController::class, 'handleGoogleCallback']);
 
 Route::middleware(['auth', 'isAdmin:0'])->group(function () {
     Route::get('/home', [AdminHomeController::class, 'index'])->name('admin.home');

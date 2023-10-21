@@ -7,6 +7,9 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -67,4 +70,42 @@ class LoginController extends Controller
         }
           
     }
+
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+
+    public function handleGoogleCallback(Request $request)
+    {
+        try {
+            $user_google    = Socialite::driver('google')->user();
+            $user           = User::where('email', $user_google->getEmail())->first();
+
+            if($user != null){
+                Auth::login($user);
+                $request->session()->put('user', $user);
+                return redirect()->route('admin.home');
+            }else{
+                User::Create([
+                    'email'             => $user_google->getEmail(),
+                    'name'              => $user_google->getName(),
+                    'password'          => 0,
+                    
+                ]);
+
+
+                $user = Auth::user();
+                $request->session()->put('user', $user);
+                return redirect(route('admin.home'));
+            }
+
+        } catch (Exception $e) {
+            dd($e->getMessage());
+        }
+
+
+    }
+
 }
