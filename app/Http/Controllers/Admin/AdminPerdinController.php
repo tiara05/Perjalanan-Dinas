@@ -28,16 +28,16 @@ class AdminPerdinController extends Controller
         return view('Admin.DataPerdin.DetailPerdin', compact('perjalanan') );
     }
 
-    public function search(Request $request)
+    public function searchperdin(Request $request)
     {
-        $search = $request->get('search');
-        $perjalanan = Perjalanan::where('kotaasal', 'like', '%'.$search.'%')
-            ->orWhere('kotatujuan', 'like', '%'.$search.'%')
-            ->orWhere('Status', 'like', '%'.$search.'%')
-            ->orWhere('durasi', 'like', '%'.$search.'%')
-            ->orWhere('keterangan', 'like', '%'.$search.'%')
-            ->orWhereHas('user', function ($query) use ($search) {
-                $query->where('name', 'like', '%'.$search.'%');
+        $searchperdin = $request->get('searchperdin');
+        $perjalanan = Perjalanan::where('kotaasal', 'like', '%'.$searchperdin.'%')
+            ->orWhere('kotatujuan', 'like', '%'.$searchperdin.'%')
+            ->orWhere('Status', 'like', '%'.$searchperdin.'%')
+            ->orWhere('durasi', 'like', '%'.$searchperdin.'%')
+            ->orWhere('keterangan', 'like', '%'.$searchperdin.'%')
+            ->orWhereHas('user', function ($query) use ($searchperdin) {
+                $query->where('name', 'like', '%'.$searchperdin.'%');
             })
             ->paginate(7);
 
