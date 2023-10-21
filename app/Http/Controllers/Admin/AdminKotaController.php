@@ -95,12 +95,12 @@ class AdminKotaController extends Controller
         return redirect(route('datakota'))->with(['success' => 'Delete Kota Berhasil']);
     }
 
-    public function search(Request $request)
+    public function searchkota(Request $request)
     {
-        $search = $request->get('search');
-        $kota = Kota::where('namakota', 'like', '%'.$search.'%')
-            ->orWhere('provinsi', 'like', '%'.$search.'%')
-            ->orWhere('pulau', 'like', '%'.$search.'%')
+        $searchkota = $request->get('searchkota');
+        $kota = Kota::where('namakota', 'like', '%'.$searchkota.'%')
+            ->orWhere('provinsi', 'like', '%'.$searchkota.'%')
+            ->orWhere('pulau', 'like', '%'.$searchkota.'%')
             ->paginate(7);
 
         return view('Admin.DataKota.DataKota', compact('kota'));

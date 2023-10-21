@@ -8,6 +8,10 @@
                 <div class="card overflow-hidden">
                         <div class="card-body p-4">
                             <h6 class="card-title mb-9 fw-semibold">Detail Perjalanan Dinas</h6>
+                            @unless(request()->is('generate-pdf/*'))
+                            <a href="{{ route('generate.pdf', ['id' => $perjalanan->id]) }}" class="btn btn-primary">Download PDF</a>
+                            @endunless
+
                             <div class="row">
                                 <div class="col">
                                     <label for="inputEmail4" class="form-label">Nama Pegawai</label>
